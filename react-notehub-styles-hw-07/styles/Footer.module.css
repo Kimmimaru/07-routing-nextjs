@@ -1,3 +1,5 @@
+/* components/Footer.module.css */
+
 .footer {
   padding: 20px;
   background-color: #f0f0f0;
@@ -5,12 +7,6 @@
   font-size: 14px;
   color: #555;
   border-top: 1px solid #ddd;
-}
-
-.content {
-  width: 90%;
-  max-width: 1280px;
-  margin: 0 auto;
 }
 
 .wrap {
@@ -27,15 +23,4 @@
 
 .footer a:hover {
   text-decoration: underline;
-}
-
-@media (max-width: 640px) {
-  .footer {
-    padding: 16px;
-  }
-
-  .wrap {
-    flex-direction: column;
-    gap: 8px;
-  }
 }

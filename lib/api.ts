@@ -21,6 +21,7 @@ export interface FetchNotesParams {
   page: number;
   perPage: number;
   search?: string;
+  tag?: NoteTag | "all";
 }
 
 export interface FetchNotesResponse {
@@ -37,7 +38,7 @@ export interface CreateNoteParams {
 export const fetchNotes = async (
   params: FetchNotesParams,
 ): Promise<FetchNotesResponse> => {
-  const { page, perPage, search } = params;
+  const { page, perPage, search, tag } = params;
 
   const response: AxiosResponse<FetchNotesResponse> = await noteHubApi.get(
     "/notes",
@@ -46,6 +47,7 @@ export const fetchNotes = async (
         page,
         perPage,
         ...(search ? { search } : {}),
+        ...(tag && tag !== "all" ? { tag } : {}),
       },
     },
   );

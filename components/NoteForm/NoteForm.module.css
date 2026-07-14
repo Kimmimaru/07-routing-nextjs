@@ -69,3 +69,14 @@
   font-size: 12px;
   margin-top: 4px;
 }
+
+@media (max-width: 640px) {
+  .actions {
+    flex-direction: column;
+  }
+
+  .cancelButton,
+  .submitButton {
+    width: 100%;
+  }
+}

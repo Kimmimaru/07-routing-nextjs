@@ -1,7 +1,4 @@
-import {
-  keepPreviousData,
-  useQuery,
-} from "@tanstack/react-query";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
 import Modal from "../Modal/Modal";
@@ -60,9 +57,7 @@ export default function App() {
       {isLoading && <p>Loading notes...</p>}
       {isError && <p>{(error as Error).message}</p>}
 
-      {!isLoading && !isError && notes.length > 0 && (
-        <NoteList notes={notes} />
-      )}
+      {!isLoading && !isError && notes.length > 0 && <NoteList notes={notes} />}
 
       {!isLoading && !isError && notes.length === 0 && <p>No notes found.</p>}
 

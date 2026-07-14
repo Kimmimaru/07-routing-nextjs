@@ -113,7 +113,10 @@ export default function NoteForm({ onCancel }: NoteFormProps) {
               type="submit"
               className={css.submitButton}
               disabled={
-                !isValid || !dirty || isSubmitting || createNoteMutation.isPending
+                !isValid ||
+                !dirty ||
+                isSubmitting ||
+                createNoteMutation.isPending
               }
             >
               Create note

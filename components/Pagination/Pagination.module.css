@@ -47,3 +47,9 @@
   color: #fff !important;
   font-weight: 500;
 }
+
+@media (max-width: 640px) {
+  .pagination {
+    flex-wrap: wrap;
+  }
+}

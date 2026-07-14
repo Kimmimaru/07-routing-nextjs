@@ -9,11 +9,16 @@ import NoteList from "@/components/NoteList/NoteList";
 import Pagination from "@/components/Pagination/Pagination";
 import SearchBox from "@/components/SearchBox/SearchBox";
 import { fetchNotes } from "@/lib/api";
-import css from "./NotesPage.module.css";
+import { type NoteTag } from "@/types/note";
+import css from "@/react-notehub-styles-hw-07/styles/NotesPage.module.css";
 
 const PER_PAGE = 12;
 
-export default function NotesClient() {
+interface NotesClientProps {
+  tag: NoteTag | "all";
+}
+
+export default function NotesClient({ tag }: NotesClientProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchValue, setSearchValue] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -24,12 +29,13 @@ export default function NotesClient() {
   }, 300);
 
   const { data, isLoading, isError } = useQuery({
-    queryKey: ["notes", currentPage, searchValue],
+    queryKey: ["notes", currentPage, searchValue, tag],
     queryFn: () =>
       fetchNotes({
         page: currentPage,
         perPage: PER_PAGE,
         search: searchValue,
+        tag,
       }),
     placeholderData: keepPreviousData,
   });
